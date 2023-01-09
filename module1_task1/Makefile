@@ -9,4 +9,4 @@ post: ## Create a new blog post whose filename and title come from the environme
 	sed -i '/title:/c\title: "$(POST_TITLE)"' content/posts/$(POST_NAME).md
 
 help: ## Displays helpful information for Makefile commands
-	cat Makefile | grep '##' | tr -d '##'
+	grep '##' ./Makefile  | sed 's/ ##/ /' |  head -n -1
