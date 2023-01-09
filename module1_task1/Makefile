@@ -1,9 +1,12 @@
-clean:
+clean:     ## Cleanup the content of the directory dist/
 	rm -r ./dist/
 
-build:
+build:	   ## Generate the website from the markdown and configuration files in the directory dist/.
 	hugo > /dev/null 2>&1
 
-post:
+post:0     ## Create a new blog post whose filename and title come from the environment variables POST_TITLE and POST_NAME.
 	hugo new posts/$(POST_NAME).md
 	sed -i '/title:/c\title: "$(POST_TITLE)"' content/posts/$(POST_NAME).md
+
+help: ## Displays helpful information for Makefile commands
+	cat Makefile | grep '##' | tr -d '##'
